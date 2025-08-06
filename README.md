@@ -122,7 +122,7 @@ src/
 
 1. **Clone the repository**
    ```bash
-   
+   https://github.com/DeepikaChaturvedi11/zestnexus-dashboard-.git
    ```
 
 2. **Install dependencies**
