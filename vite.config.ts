@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     host: "::",
     port: 8080,
+    
     fs: {
       allow: ["./src", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**"],

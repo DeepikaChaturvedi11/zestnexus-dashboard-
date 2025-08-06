@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { PlusOutlined, SearchOutlined, ProjectOutlined } from '@ant-design/icons';
-import { Space, Row, Col, Statistic } from 'antd';
-import { useAtom } from 'jotai';
-import { projectsAtom, activeProjectsAtom, completedProjectsAtom, delayedProjectsAtom, Project } from '../store';
-import ProjectsTable from '../components/table/ProjectsTable';
-import ProjectFormModal from '../components/ProjectFormModal';
-import { Input, Select, Button, Card } from 'antd';
+import React, { useState } from "react";
+import {
+  PlusOutlined,
+  SearchOutlined,
+  ProjectOutlined,
+} from "@ant-design/icons";
+import { Space, Row, Col, Statistic } from "antd";
+import { useAtom } from "jotai";
+import {
+  projectsAtom,
+  activeProjectsAtom,
+  completedProjectsAtom,
+  delayedProjectsAtom,
+  Project,
+} from "../store";
+import ProjectsTable from "../components/table/ProjectsTable";
+import ProjectFormModal from "../components/ProjectFormModal";
+import { Input, Select, Button, Card } from "antd";
 const { Search } = Input;
 const { Option } = Select;
 
@@ -14,14 +24,16 @@ const Dashboard: React.FC = () => {
   const [activeProjects] = useAtom(activeProjectsAtom);
   const [completedProjects] = useAtom(completedProjectsAtom);
   const [delayedProjects] = useAtom(delayedProjectsAtom);
-  
-  const [searchText, setSearchText] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('');
+
+  const [searchText, setSearchText] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
 
-  const filteredProjects = projects.filter(project => {
-    const matchesSearch = project.name.toLowerCase().includes(searchText.toLowerCase());
+  const filteredProjects = projects.filter((project) => {
+    const matchesSearch = project.name
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
     const matchesStatus = !statusFilter || project.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -32,43 +44,43 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
-      {/* Statistics Cards */}
-      <Row gutter={16} className="mb-6">
-        <Col span={6}>
-          <Card variant="outlined" className="hover:scale-105 transition-transform">
+<div className="min-h-screen overflow-auto p-4 sm:p-6 bg-white">
+     <Row gutter={[16, 16]} className="mb-6 flex-wrap">
+
+        <Col xs={24} sm={12} md={6}>
+          <Card className="hover:scale-105 transition-transform">
             <Statistic
               title="Total Projects"
               value={projects.length}
               prefix={<ProjectOutlined />}
-              valueStyle={{ color: '#1890ff' }}
+              valueStyle={{ color: "#1890ff" }}
             />
           </Card>
         </Col>
-        <Col span={6}>
-          <Card variant="outlined" className="hover:scale-105 transition-transform">
+        <Col xs={24} sm={12} md={6}>
+          <Card className="hover:scale-105 transition-transform">
             <Statistic
               title="Active Projects"
               value={activeProjects.length}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: "#52c41a" }}
             />
           </Card>
         </Col>
-        <Col span={6}>
-          <Card variant="outlined" className="hover:scale-105 transition-transform">
+        <Col xs={24} sm={12} md={6}>
+          <Card className="hover:scale-105 transition-transform">
             <Statistic
               title="Completed Projects"
               value={completedProjects.length}
-              valueStyle={{ color: '#1890ff' }}
+              valueStyle={{ color: "#1890ff" }}
             />
           </Card>
         </Col>
-        <Col span={6}>
-          <Card variant="outlined" className="hover:scale-105 transition-transform">
+        <Col xs={24} sm={12} md={6}>
+          <Card className="hover:scale-105 transition-transform">
             <Statistic
               title="Delayed Projects"
               value={delayedProjects.length}
-              valueStyle={{ color: '#ff4d4f' }}
+              valueStyle={{ color: "#ff4d4f" }}
             />
           </Card>
         </Col>
@@ -94,14 +106,14 @@ const Dashboard: React.FC = () => {
       {/* Filters */}
       <Card variant="outlined" className="mb-6">
         <Space size="middle" className="w-full">
-         
-        <Space size="middle" className="w-full"/>
+          <Space size="middle" className="w-full" />
+
           <Input.Search
             placeholder="Search projects..."
             allowClear
-            style={{ width: 300 }}
+            className="w-full max-w-sm"
             value={searchText}
-            onChange={e => setSearchText(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <Select
             placeholder="Filter by status"
@@ -115,13 +127,10 @@ const Dashboard: React.FC = () => {
             <Option value="Delayed">Delayed</Option>
           </Select>
         </Space>
-        </Card>
+      </Card>
       {/* Projects Table */}
       <Card variant="outlined">
-        <ProjectsTable
-          projects={filteredProjects}
-          onEdit={handleEdit}
-        />
+        <ProjectsTable projects={filteredProjects} onEdit={handleEdit} />
       </Card>
 
       {/* Project Form Modal */}
@@ -138,6 +147,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-
-
-

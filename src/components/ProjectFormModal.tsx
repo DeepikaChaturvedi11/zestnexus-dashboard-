@@ -82,7 +82,8 @@ const ProjectFormModal: React.FC<ProjectFormModalProps> = ({
       onOk={() => form.submit()}
       okText={isEditing ? 'Update' : 'Create'}
       cancelText="Cancel"
-      width={600}
+      className="max-w-full sm:max-w-[600px]"
+
     >
       <Form
         form={form}

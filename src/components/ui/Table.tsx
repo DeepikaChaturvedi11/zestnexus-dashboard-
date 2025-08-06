@@ -38,6 +38,7 @@ const Table = <T extends Record<string, any>>({
     <AntTable<T>
       size={tableSize}
       className={cn(getTableStyles(), className)}
+      
       pagination={{
         ...defaultPagination,
         ...props.pagination,

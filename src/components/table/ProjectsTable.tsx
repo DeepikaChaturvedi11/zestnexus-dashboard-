@@ -113,6 +113,8 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({ projects, onEdit }) => {
       rowKey="id"
       className="shadow-sm rounded-lg overflow-hidden"
       {...tableProps}
+      pagination={{ pageSize: 5 }}
+  scroll={{ x: 'max-content' }}
     />
   );
 };

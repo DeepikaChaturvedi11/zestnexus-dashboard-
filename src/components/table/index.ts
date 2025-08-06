@@ -126,7 +126,8 @@ export const ProjectTable: React.FC = () => {
       <Table
         columns={columns}
         dataSource={data}
-        pagination={{ pageSize: 10 }}
+  scroll={{ x: 'max-content' }}
+        pagination={{ pageSize: 5 }}
         onChange={(pagination, filters) => {
           if (filters.status) {
             setFilteredStatus(filters.status as string[]);

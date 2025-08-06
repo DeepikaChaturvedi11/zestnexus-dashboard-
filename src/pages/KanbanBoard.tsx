@@ -101,9 +101,11 @@ const KanbanBoard: React.FC = () => {
   ];
 
   return (
-    <div className="p-6">
+<div className="min-h-screen overflow-auto p-6 bg-white">
       <div className="flex justify-between items-center mb-6">
-        <Title level={2}>Kanban Board</Title>
+<Title level={2} className="text-xl sm:text-xl md:text-3xl">
+  Kanban Board
+</Title>
         <Button 
           type="primary" 
           icon={<PlusOutlined />}
@@ -119,6 +121,7 @@ const KanbanBoard: React.FC = () => {
         onDragEnd={handleDragEnd}
       >
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+
           {columns.map(column => (
             <DroppableColumn
               key={column.id}
@@ -144,6 +147,34 @@ const KanbanBoard: React.FC = () => {
             </DroppableColumn>
           ))}
         </div>
+{/* <div className="overflow-x-auto">
+  <div className="flex gap-4 min-w-[768px]">
+    {columns.map(column => (
+      <DroppableColumn
+        key={column.id}
+        id={column.id}
+        title={column.title}
+        color={column.color}
+        count={column.tasks.length}
+      >
+        <SortableContext 
+          items={column.tasks.map(task => task.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          <div className="space-y-2">
+            {column.tasks.map(task => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                onDelete={handleDeleteTask}
+              />
+            ))}
+          </div>
+        </SortableContext>
+      </DroppableColumn>
+    ))}
+  </div>
+</div> */}
 
         <DragOverlay>
           {activeTask ? (
@@ -167,14 +198,16 @@ const KanbanBoard: React.FC = () => {
           layout="vertical"
           onFinish={handleAddTask}
         >
-          <Form.Item
-            label="Task Title"
-            name="title"
-            rules={[{ required: true, message: 'Please enter task title!' }]}
-          >
-            <Input placeholder="Enter task title" />
-          </Form.Item>
+         
 
+
+<Form.Item
+  label="Task Title"
+  name="title"
+  rules={[{ required: true, message: 'Please enter task title!' }]}
+>
+  <Input placeholder="Enter task title" className="w-full" />
+</Form.Item>
           <Form.Item
             label="Description"
             name="description"

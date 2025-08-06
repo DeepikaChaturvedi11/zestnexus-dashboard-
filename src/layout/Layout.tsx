@@ -87,18 +87,22 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         trigger={null}
         collapsible
         collapsed={collapsed}
+          collapsedWidth="0"  
         className="shadow-lg bg-white dark:bg-gray-800"
         theme={theme === "dark" ? "dark" : "light"}
       >
         <div className="p-4 text-center border-b border-gray-200 dark:border-gray-700">
           {" "}
-          <h1
-            className={`text-blue-600 font-extrabold transition-all leading-tight ${
-              collapsed ? "text-lg" : "text-2xl"
-            }`}
-          >
-            {collapsed ? "ZN" : "ZestNexus"}
-          </h1>
+        <Link to="/dashboard">
+  <h1
+    className={`text-blue-600 font-extrabold transition-all leading-tight cursor-pointer ${
+      collapsed ? "text-lg" : "text-2xl"
+    }`}
+  >
+    {collapsed ? "ZN" : "ZestNexus"}
+  </h1>
+</Link>
+
           {!collapsed && (
             <p className="text-sm text-gray-500 mt-1 tracking-wide">
               Project Manager

@@ -9,6 +9,9 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
+    html, body {
+    scroll-behavior: smooth;
+  }
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
       transition: background-color 0.3s, color 0.3s;

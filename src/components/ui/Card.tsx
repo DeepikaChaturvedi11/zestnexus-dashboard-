@@ -2,9 +2,12 @@ import React from 'react';
 import { Card as AntCard, CardProps as AntCardProps } from 'antd';
 import { cn } from '../../utils';
 
-interface CardProps extends AntCardProps {
+interface CardProps {
   variant?: 'default' | 'outlined' | 'elevated' | 'glass';
   padding?: 'none' | 'small' | 'medium' | 'large';
+  className?: string;
+  children?: React.ReactNode;
+  [key: string]: any; // Allow other props to be passed
 }
 
 const Card: React.FC<CardProps> = ({ 
